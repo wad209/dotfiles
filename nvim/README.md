@@ -9,7 +9,6 @@ reference. This list isn't exhaustive, but I'll try and keep it up to date.
 | `\n`       | Toggle NERDTree           |
 | `\N`       | Jump into NERDTree window |
 | `ctlr-w l` | Jump back to main window  |
-|------------|---------------------------|
 
 # NERDCommenter
 https://github.com/preservim/nerdcommenter has a complete list of keybindings
@@ -22,7 +21,6 @@ but here are some of the most useful:
 | `<leader>cs`       | Comments out the selected lines with a pretty block formatted layout.              |
 | `<leader>ca`       | Switches to the alternative set of delimiters.                                     |
 | `<leader>cA`       | Adds comment delimiters to the end of line and goes into insert mode between them. |
-|--------------------|------------------------------------------------------------------------------------|
 
 # coc.nvim
 Again, there are a ton of bindings not documented here.
@@ -37,7 +35,6 @@ Again, there are a ton of bindings not documented here.
 | `gi`         | Show implementations                                                               |
 | `gr`         | Show references                                                                    |
 | `K`          | Show documentation                                                                 |
-|--------------|------------------------------------------------------------------------------------|
 | `<leader>rn` | Open rename dialog                                                                 |
 | `<leader>f`  | Format selected code                                                               |
 | `<leader>a`  | Apply code actions (aka recommended fixes) to selected code                        |
@@ -50,12 +47,10 @@ Again, there are a ton of bindings not documented here.
 | `<leader>cl` | Run the Code Lens action on the current line                                       |
 | `<leader>f`  | Format selected code                                                               |
 | `<leader>f`  | Format selected code                                                               |
-|--------------|------------------------------------------------------------------------------------|
 | `C-s`        | Selection ranges (needs serer support)                                             |
 | `:Format`    | Format current buffer                                                              |
 | `:Fold`      | Fold current buffer (folding also works on classes/function)                       |
 | `:OR`        | Organize imports                                                                   |
-|--------------|------------------------------------------------------------------------------------|
 | `<space>a`   | Show diagnostics                                                                   |
 | `<space>e`   | Manage extensions                                                                  |
 | `<space>c`   | Show commands                                                                      |
@@ -64,7 +59,6 @@ Again, there are a ton of bindings not documented here.
 | `<space>j`   | Do default action for the next item                                                |
 | `<space>k`   | Do default action for the previous item                                            |
 | `<space>p`   | Resume latest coc list                                                             |
-|--------------|------------------------------------------------------------------------------------|
 
 # FIXME
 1. :CocDiagnostics seems to not work or only partially work.
