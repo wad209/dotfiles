@@ -15,8 +15,8 @@ call plug#begin()
  Plug 'sheerun/vim-polyglot'
  Plug 'jiangmiao/auto-pairs'
  Plug 'ryanoasis/vim-devicons'
- Plug 'SirVer/ultisnips'
- Plug 'honza/vim-snippets'
+ "Plug 'SirVer/ultisnips'
+ "Plug 'honza/vim-snippets'
  Plug 'scrooloose/nerdtree'
  Plug 'preservim/nerdcommenter'
  Plug 'mhinz/vim-startify'
@@ -190,6 +190,30 @@ nmap <leader>n :NERDTreeToggle<CR>
 nnoremap <leader>N :NERDTreeFocus<CR>
 " }}}
 
+" NERDCommenter {{{
+ " Create default mappings
+let g:NERDCreateDefaultMappings = 0
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+" Enable NERDCommenterToggle to check all selected lines is commented or not 
+let g:NERDToggleCheckAllLines = 1
+
+" Add default mappings except for <leader>cl which conflicts with coc.nvim
+nmap <leader>cc <Plug>NERDCommenterComment
+nmap <leader>c<space> <Plug>NERDCommenterToggle
+nmap <leader>cs <Plug>NERDCommenterSexy
+nmap <leader>ca <Plug>NERDCommenterAltDelims
+nmap <leader>cA <Plug>NERDCommenterAppend
+" }}}
+
 " airline {{{
 " Show buffers as tabs
 let g:airline#extensions#tabline#enabled = 1
@@ -294,6 +318,8 @@ xmap <silent> <leader>r  <Plug>(coc-codeaction-refactor-selected)
 nmap <silent> <leader>r  <Plug>(coc-codeaction-refactor-selected)
 
 " Run the Code Lens action on the current line
+" Remove NERDCommenter keybinding first
+unmap <leader>cl
 nmap <leader>cl  <Plug>(coc-codelens-action)
 
 " Map function and class text objects
