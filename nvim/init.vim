@@ -15,12 +15,14 @@ call plug#begin()
  Plug 'sheerun/vim-polyglot'
  Plug 'jiangmiao/auto-pairs'
  Plug 'ryanoasis/vim-devicons'
- Plug 'SirVer/ultisnips'
+ " Plug 'SirVer/ultisnips'
  Plug 'honza/vim-snippets'
  Plug 'preservim/tagbar' 
  Plug 'scrooloose/nerdtree'
  Plug 'preservim/nerdcommenter'
  Plug 'mhinz/vim-startify'
+ Plug 'nvim-lua/plenary.nvim'
+ Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
  Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
   \ 'coc-tsserver',
@@ -29,7 +31,7 @@ let g:coc_global_extensions = [
   \ 'coc-html',
   \ 'coc-css' ,
   \ 'coc-markdownlint',
-  \ 'coc-snippets'
+  \ 'coc-snippets',
   \ ]
 call plug#end()
 
@@ -53,7 +55,7 @@ set wildmode=longest,list
 " }}}
  
 " Buffers {{{
-
+" FIXME: add some keybindings to bind to :bn/:bp
 " }}}
 
 " Indentation {{{
@@ -415,4 +417,13 @@ function! CheckBackspace() abort
 endfunction
 
 let g:coc_snippet_next = '<tab>'
+" }}}
+ 
+" nvim-telescope {{{
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>fr <cmd>Telescope git_files<cr>
 " }}}
