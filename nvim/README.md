@@ -29,7 +29,6 @@ Again, there are a ton of bindings not documented here.
 |--------------|------------------------------------------------------------------------------------|
 | `C-n/p`      | Next/prev for coc completion menu.                                                 |
 | `]g`  `[g`   | Previous/next for diagnostic message. See all with `:CocDiagnostics`               |
-|--------------|------------------------------------------------------------------------------------|
 | `gd`         | Jump to definition                                                                 |
 | `gy`         | Open type definition file (or jump to it if its in the current file?)              |
 | `gi`         | Show implementations                                                               |
