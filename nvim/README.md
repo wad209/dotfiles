@@ -1,17 +1,40 @@
-## Keybindings
+# Keybindings
 
 Here's a quick list of the custom keybindings and plugin Keybindings for easy
 reference. This list isn't exhaustive, but I'll try and keep it up to date.
 
-# NERDTree
-| Keystroke  | Description               |
-|------------|---------------------------|
-| `\n`       | Toggle NERDTree           |
-| `\N`       | Jump into NERDTree window |
-| `ctlr-w l` | Jump back to main window  |
+## Folding
 
-# NERDCommenter
-https://github.com/preservim/nerdcommenter has a complete list of keybindings
+| Keystroke    | Description                        |
+|--------------|------------------------------------|
+| `za`         | Toggle fold                        |
+| `zd`         | Delete fold marker on current line |
+| `zf{motion}` | Create fold from current line      |
+| `zR`         | Open all folds                     |
+| `zM`         | Close all folds                    |
+
+## Navigation
+
+| Keystroke     | Description               |
+|---------------|---------------------------|
+| `C-w h/l/j/k` | Jump between windows      |
+
+## NERDTree
+
+| Keystroke   | Description               |
+|-------------|---------------------------|
+| `<leader>n` | Toggle NERDTree           |
+| `<leader>N` | Jump into NERDTree window |
+
+## Tagbar
+
+| Keystroke   | Description   |
+|-------------|---------------|
+| `<leader>t` | Toggle Tagbar |
+
+## NERDCommenter
+
+<https://github.com/preservim/nerdcommenter> has a complete list of keybindings
 but here are some of the most useful:
 
 | Keystroke    | Description                                                                              |
@@ -22,7 +45,8 @@ but here are some of the most useful:
 | `<leader>ca`       | Switches to the alternative set of delimiters.                                     |
 | `<leader>cA`       | Adds comment delimiters to the end of line and goes into insert mode between them. |
 
-# coc.nvim
+## coc.nvim
+
 Again, there are a ton of bindings not documented here.
 
 | Keystroke    | Description                                                                        |
@@ -31,7 +55,7 @@ Again, there are a ton of bindings not documented here.
 | `]g`  `[g`   | Previous/next for diagnostic message. See all with `:CocDiagnostics`               |
 | `gd`         | Jump to definition                                                                 |
 | `gy`         | Open type definition file (or jump to it if its in the current file?)              |
-| `gi`         | Show implementations                                                               |
+| `gi`         | Jump to implementations                                                            |
 | `gr`         | Show references                                                                    |
 | `K`          | Show documentation                                                                 |
 | `<leader>rn` | Open rename dialog                                                                 |
@@ -59,7 +83,16 @@ Again, there are a ton of bindings not documented here.
 | `<space>k`   | Do default action for the previous item                                            |
 | `<space>p`   | Resume latest coc list                                                             |
 
-# FIXME
+## coc-snippets
+
+| Keystroke    | Description                                                                        |
+|--------------|------------------------------------------------------------------------------------|
+| `C-l`        | Trigger snippet expand                                        |
+| `C-j/k`      | Jump to next/previous placeholder                             |
+| `<tab>`      | Trigger snippet. Does this conflict with the autocomplete? |
+
+## FIXME
+
 1. :CocDiagnostics seems to not work or only partially work.
 
 2. coc-codelens-action doesn't work (at least in JS)
