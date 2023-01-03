@@ -1,7 +1,7 @@
 # Original Author:       mutantmonkey (https://github.com/mutantmonkey)
-# Modified by:           Wad
-# Last change:           2015 March 21
-# I blatetly stole this, need do to some work on this
+# Modified by:           wad209
+# Last change:           2023-01-02
+# I blatetly stole this, and it's been modified fairly heavily.
 
 # History {{{
 
