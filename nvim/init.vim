@@ -23,15 +23,20 @@ call plug#begin()
  Plug 'mhinz/vim-startify'
  Plug 'nvim-lua/plenary.nvim'
  Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
+ Plug 'nathangrigg/vim-beancount'
  Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
   \ 'coc-tsserver',
+  \ 'coc-eslint',
   \ 'coc-pyright',
   \ 'coc-clangd',
   \ 'coc-html',
   \ 'coc-css' ,
   \ 'coc-markdownlint',
   \ 'coc-snippets',
+  \ 'coc-yaml',
+  \ 'coc-docker',
+  \ 'coc-vimtex',
   \ ]
 call plug#end()
 
