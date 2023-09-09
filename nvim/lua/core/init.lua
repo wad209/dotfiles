@@ -1,0 +1,5 @@
+require("core.keymaps")
+require("core.lazy")
+require("core.autocmds")
+require("core.colors")
+require("core.options")

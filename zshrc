@@ -163,3 +163,5 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
 eval "$(starship init zsh)"
+
+source "$HOME/.cargo/env"
