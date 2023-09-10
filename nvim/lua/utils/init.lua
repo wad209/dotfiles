@@ -21,7 +21,7 @@ M.linters = {
 
 M.daps = {
   "python",
-  "cppdbg",
+  "codelldb",
   "js",
 }
 
