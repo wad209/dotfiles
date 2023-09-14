@@ -1,15 +1,56 @@
 local M = {
-  "navarasu/onedark.nvim",
+  "wadeduvall/onedark-chad.nvim",
+  -- 'catppuccin/nvim',
   lazy = false, -- make sure we load this during startup if it is your main colorscheme
   priority = 1000, -- make sure to load this before all the other start plugins
 }
 
-M.name = "onedark.nvim"
 function M.config()
-  local status_ok, _ = pcall(vim.cmd.colorscheme, M.name)
-  if not status_ok then
-    return
-  end
+  require("onedark").setup{
+    style = 'warm'
+  }
+
+  require('onedark').load()
 end
+
+-- function M.config()
+--   require("catppuccin").setup({
+--     flavour = "macchiato", -- latte, frappe, macchiato, mocha
+--     integrations = {
+--       cmp = true,
+--       gitsigns = true,
+--       dap = {
+--         enabled = true,
+--         enable_ui = true,
+--       },
+--       mason = true,
+--       native_lsp = {
+--         enabled = false,
+--         virtual_text = {
+--           errors = { "italic" },
+--           hints = { "italic" },
+--           warnings = { "italic" },
+--           information = { "italic" },
+--         },
+--         underlines = {
+--           errors = { "underline" },
+--           hints = { "underline" },
+--           warnings = { "underline" },
+--           information = { "underline" },
+--         },
+--         inlay_hints = {
+--           background = true,
+--         },
+--       },
+--       nvimtree = true,
+--       treesitter = true,
+--       telescope = {
+--         enabled = true,
+--         style = "nvchad"
+--       },
+--     },
+--   })
+--   vim.cmd.colorscheme("catppuccin-macchiato")
+-- end
 
 return M
