@@ -13,6 +13,7 @@ M.servers = {
 }
 
 M.linters = {
+  "clang-format",
   "flake8",
   "prettier",
   "stylua",
