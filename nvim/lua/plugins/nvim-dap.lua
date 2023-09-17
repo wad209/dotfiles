@@ -1,10 +1,16 @@
 local M = {
   "mfussenegger/nvim-dap",
   event = "VeryLazy",
+  dependencies = {
+    {
+      'theHamsta/nvim-dap-virtual-text',
+    }
+  }
 }
 
 function M.config()
   local dap = require("dap")
+  require('nvim-dap-virtual-text').setup()
 
   local dap_ui_status_ok, dapui = pcall(require, "dapui")
   if not dap_ui_status_ok then

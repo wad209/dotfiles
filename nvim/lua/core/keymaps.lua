@@ -66,3 +66,8 @@ keymap("n", "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>", opts)
 keymap("n", "<leader>dl", "<cmd>lua require'dap'.run_last()<cr>", opts)
 keymap("n", "<leader>du", "<cmd>lua require'dapui'.toggle()<cr>", opts)
 keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
+
+-- vim-illuminate
+-- Doesn't work on Mac?
+keymap("n", "<a-n>", "<cmd>lua require('illuminate').next_reference{wrap=true}<cr>", { noremap = true })
+keymap("n", "<a-p>", "<cmd>lua require('illuminate').next_reference{reverse=true,wrap=true}<cr>", { noremap = true })
