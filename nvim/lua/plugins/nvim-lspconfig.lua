@@ -77,7 +77,8 @@ function M.config()
       active = signs,
     },
     update_in_insert = false,
-    underline = false,
+    -- underline mistakes
+    underline = true,
     severity_sort = true,
     float = {
       focusable = false,

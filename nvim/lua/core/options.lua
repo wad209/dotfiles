@@ -13,6 +13,7 @@ opt.undofile = true             -- Enable persistent undo
 opt.cursorline = true               -- Highlight current line
 opt.cmdheight = 1                   -- More space in the command line for displaying messages
 opt.number = true                   -- Show line numbers
+opt.relativenumber = true           -- Make line numbers relative
 opt.showmatch = true                -- Highlight matching pairs
 opt.matchpairs:append { '<:>' }     -- Make < and > match
 opt.foldmethod = 'marker'           -- Enable folding (default 'foldmarker')

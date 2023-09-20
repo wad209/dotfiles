@@ -18,6 +18,7 @@ M.linters = {
   "prettier",
   "stylua",
   "black",
+  "isort",
 }
 
 M.daps = {

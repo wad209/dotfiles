@@ -1,6 +1,7 @@
 local M = {
   "nvim-treesitter/nvim-treesitter",
   event = "BufReadPost",
+  run = ':TSUpdate',
   dependencies = {
     {
       "JoosepAlviste/nvim-ts-context-commentstring",
@@ -9,6 +10,9 @@ local M = {
     {
       "nvim-tree/nvim-web-devicons",
     },
+    {
+      'nvim-treesitter/nvim-treesitter-textobjects'
+    }
   },
 }
 
