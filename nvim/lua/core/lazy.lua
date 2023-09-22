@@ -16,7 +16,7 @@ require("lazy").setup("plugins", {
   install = { colorscheme = { require("plugins.colorscheme").name } },
   defaults = { lazy = true },
   ui = { wrap = "true" },
-  change_detection = { enabled = true },
+  change_detection = { enabled = true, notify = false },
   debug = false,
   performance = {
     rtp = {
