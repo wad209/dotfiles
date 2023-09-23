@@ -19,9 +19,9 @@ local function open_nvim_tree(data)
 end
 
 -- Open nvim-tree automatically
-autocmd("VimEnter", {
-  callback = open_nvim_tree,
-})
+-- autocmd("VimEnter", {
+--   callback = open_nvim_tree,
+-- })
 -- Close nvim-tree on on :q
 autocmd("QuitPre", {
   command = "NvimTreeClose",

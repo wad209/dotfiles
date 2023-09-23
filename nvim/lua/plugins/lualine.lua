@@ -41,7 +41,7 @@ function M.config()
   -- end
   lualine.setup({
     options = {
-      theme = "catppuccin",
+      theme = "onedark",
       globalstatus = true,
       icons_enabled = true,
       component_separators = "|",

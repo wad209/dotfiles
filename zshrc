@@ -117,7 +117,8 @@ export PROMPT2="$MAIN_COLOR... $RESET_COLOR"
 export BROWSER=google-chrome-stable
 export EDITOR=nvim
 export PAGER=less
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+# export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+# MANPAGER="nvim -c 'set ft=man' -"
 export LESS="-R -iMx4"
 export MPD_HOST="192.168.1.217"
 export LEDGER_FILE=~/.hledger/hledger.journal
@@ -143,13 +144,13 @@ alias vim='nvim'
 if [[ `uname` == "Darwin" ]]; then
     alias ssh='ssh -I /opt/homebrew/lib/libykcs11.dylib'
 fi
-alias ls='exa --group-directories-first -F'
-alias tree='exa --tree'
-alias cat='bat --theme="zenburn"'
+alias ls='eza --icons --classify --group-directories-first -F'
+alias tree='eza --tree'
+alias cat='bat --theme="OneHalfDark"'
 alias du='dua'
 alias find='fd'
 alias cp='xcp'
-alias grep='ripgrep'
+alias grep='rg'
 
 # }}}
 

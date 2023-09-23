@@ -1,0 +1,17 @@
+# Colors (One Dark)
+colors:
+  # Default colors
+  primary:
+    background: '0x232326'
+    foreground: '0xa7aab0'
+
+  # Normal colors
+  normal:
+    black: '0x101012'
+    red: '0xde5d68'
+    green: '0x8fb573'
+    yellow: '0xdbb671'
+    blue: '0x57a5e5'
+    magenta: '0xc75ae8'
+    cyan: '0x34bfd0'
+    white: '0xabb2bf'
