@@ -43,7 +43,8 @@ keymap("n", "<leader>r", ":so %<CR>")
 
 -- Plugins
 -- NvimTree
-keymap("n", "<leader>n", ":NvimTreeFocus<CR>") -- open/close
+keymap("n", "<leader>n", ":NvimTreeToggle<CR>") -- open/close
+keymap("n", "<leader>N", ":NvimTreeFocus<CR>") -- Jump to tree
 
 -- Tagbar
 keymap("n", "<leader>t", ":SymbolsOutline<CR>") -- open/close
