@@ -23,10 +23,10 @@ keymap("n", "<F2>", ":set invpaste paste?<CR>")
 vim.opt.pastetoggle = "<F2>"
 
 -- Move around splits using Ctrl + {h,j,k,l}
-keymap("n", "<C-h>", "<C-w>h")
-keymap("n", "<C-j>", "<C-w>j")
-keymap("n", "<C-k>", "<C-w>k")
-keymap("n", "<C-l>", "<C-w>l")
+keymap("n", "<C-h>", ":TmuxNavigateLeft<CR>")
+keymap("n", "<C-j>", ":TmuxNavigateDown<CR>")
+keymap("n", "<C-k>", ":TmuxNavigateUp<CR>")
+keymap("n", "<C-l>", ":TmuxNavigateRight<CR>")
 --
 -- Navigate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
