@@ -1,34 +1,33 @@
 local M = {
   "lukas-reineke/indent-blankline.nvim",
   event = "BufReadPre",
+  main = "ibl",
+  opts = {},
 }
 
-M.opts = {
-  char = "▏",
-  use_treesitter = true,
-  show_first_indent_level = true,
-  -- What does this do?
-  --show_trailing_blankline_indent = false,
-  show_current_context = true,
-  filetype_exclude = {
-    "lspinfo",
-    "packer",
-    "checkhealth",
-    "help",
-    "man",
-    "dashboard",
-    "git",
-    "markdown",
-    "text",
-    "terminal",
-    "NvimTree",
-  },
-  buftype_exclude = {
-    "terminal",
-    "nofile",
-    "quickfix",
-    "prompt",
-  },
-}
+function M.config()
+  require("ibl").setup({
+    exclude = {
+      filetypes = {
+        "lspinfo",
+        "packer",
+        "checkhealth",
+        "help",
+        "man",
+        "gitcommit",
+        "TelescopePrompt",
+        "TelescopeResults",
+        "markdown",
+        "text",
+        "NvimTree",
+      },
+    },
+  })
+end
+-- M.opts = {
+--   char = "▏",
+--   use_treesitter = true,
+--   show_first_indent_level = true,
+-- }
 
 return M

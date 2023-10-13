@@ -10,7 +10,7 @@ M.servers = {
   "jsonls",
   "yamlls",
   "clangd",
-  "ltex",
+  -- "ltex",
 }
 
 M.linters = {
@@ -21,7 +21,7 @@ M.linters = {
   "black",
   "isort",
   "codespell",
-  "vale",
+  -- "vale",
 }
 
 M.daps = {
