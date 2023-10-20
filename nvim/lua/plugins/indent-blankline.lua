@@ -22,12 +22,11 @@ function M.config()
         "NvimTree",
       },
     },
+    scope = {
+      show_start = false,
+      show_end = false,
+    },
   })
 end
--- M.opts = {
---   char = "▏",
---   use_treesitter = true,
---   show_first_indent_level = true,
--- }
 
 return M

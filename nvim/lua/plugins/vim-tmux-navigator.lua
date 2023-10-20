@@ -4,4 +4,6 @@ local M = {
   event = "VeryLazy",
 }
 
+vim.g.tmux_navigator_no_mappings = 1
+
 return M
