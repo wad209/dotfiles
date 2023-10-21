@@ -1,27 +1,55 @@
+# Getting started
+
+If you've used other neovim configs, be sure and do
+
+```
+rm -r ~/.local/share/nvim/
+```
+
+to avoid any issues. Ensure `python3-venv`, `npm`, `rg` and `fd` are also
+installed.
+
+When you run nvim for the first time, lazy.nvim will download all the plugins.
+Once this is complete, hit `q` and wait for treesitter to finish downloading
+parsers. Then, run `:Mason` and let it download and install LSP etc. Then quit
+and restart nvim!
+
 # Keybindings
 
 Here's a quick list of the custom keybindings and plugin Keybindings for easy
 reference. This list isn't exhaustive, but I'll try and keep it up to date.
 
-## Folding <!--{{{-->
+## nvim-lspconfig/nvim-cmp
 
-| Keystroke    | Description                        |
-| ------------ | ---------------------------------- |
-| `za`         | Toggle fold                        |
-| `zd`         | Delete fold marker on current line |
-| `zf{motion}` | Create fold from current line      |
-| `zR`         | Open all folds                     |
-| `zM`         | Close all folds                    |
+    keymap(bufnr, "n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 
-<!--}}}-->
+| Keystroke          | Description                                           |
+| ------------------ | ----------------------------------------------------- |
+| `C-n/p` or `C-j/k` | Next/prev for cmp completion menu.                    |
+| `C-b/f`            | Scroll cmp docs                                       |
+| `gd`               | Jump to to definition                                 |
+| `gD`               | Jump to to declaration                                |
+| `K`                | Show documentation                                    |
+| `gI`               | Jump to implementations                               |
+| `gr`               | Show references                                       |
+| `gl`               | Open flow (to shows errors etc)                       |
+| `<leader>lf`       | Format file (runs LSP and linter formatting)          |
+| `<leader>li`       | Show LSP info                                         |
+| `<leader>lI`       | Show null-ls info                                     |
+| `<leader>la`       | Apply code action (if available)                      |
+| `<leader>lj/lk`    | Jump to next/prev diagnostic message                  |
+| `<leader>lr`       | Code aware rename                                     |
+| `<leader>ls`       | Show signature help                                   |
+| `C-space`          | I have no idea what this does, cmp.mapping.complete() |
+| `C-e`              | Abort cmp autocomplete (closes the menu)              |
 
-## Navigation <!--{{{-->
+## Windows and buffers
 
-| Keystroke   | Description          |
-| ----------- | -------------------- |
-| `C-h/l/j/k` | Jump between windows |
-
-<!--}}}-->
+| Keystroke   | Description           |
+| ----------- | --------------------- |
+| `C-h/l/j/k` | Jump between windows  |
+| `S-h/l/j/k` | Shift between buffers |
+| `S-q`       | Close current buffer  |
 
 ## nvim-surround
 
@@ -39,110 +67,52 @@ respectively. For the following examples, `*` will denote the cursor position:
 | `<b>or tag* types</b>`     | `csth1<CR>` | `<h1>or tag types</h1>` |
 | `delete(functi*on calls)`  | `dsf`       | `function calls`        |
 
-## nvim-tree <!--{{{-->
+## nvim-tree
 
-| Keystroke   | Description    |
-| ----------- | -------------- |
-| `<leader>n` | Open nvim tree |
+| Keystroke   | Description                 |
+| ----------- | --------------------------- |
+| `<leader>n` | Toggle the tree open/closed |
+| `<leader>N` | Jump to the tree            |
 
-<!--}}}-->
-
-## symbols-outline <!--{{{-->
+## symbols-outline
 
 | Keystroke   | Description   |
 | ----------- | ------------- |
 | `<leader>t` | Toggle Tagbar |
 
-<!--}}}-->
-
-## Comment.nvim <!--{{{-->
+## Comment.nvim
 
 <https://github.com/numToStr/Comment.nvim> has a complete list of keybindings
 but here are some of the most useful:
 
-| Keystroke                 | Description                                              |
-| ------------------------- | -------------------------------------------------------- |
-| `<leader>cc`              | Comment out the current line or text selected in visual  |
-| mode.                     |
-| `<leader>c<space>`        | Toggles the comment state of the selected line(s).       |
-| `<leader>cs`              | Comments out the selected lines with a pretty block      |
-| formatted layout.         |
-| `<leader>ca`              | Switches to the alternative set of delimiters.           |
-| `<leader>cA`              | Adds comment delimiters to the end of line and goes into |
-| insert mode between them. |
+| Keystroke | Description                                                      |
+| --------- | ---------------------------------------------------------------- |
+| `gcc`     | Toggles the current line using linewise comment                  |
+| `gcb`     | Toggles the current line using blockwise comment                 |
+| `gco`     | Insert comment to the next line and enters INSERT mode           |
+| `gcO`     | Insert comment to the previous line and enters INSERT mode       |
+| `gcA`     | Insert comment to end of the current line and enters INSERT mode |
 
-<!--}}}-->
-
-## coc.nvim <!--{{{-->
-
-Again, there are a ton of bindings not documented here.
-
-| Keystroke         | Description                                                    |
-| ----------------- | -------------------------------------------------------------- |
-| `C-n/p`           | Next/prev for coc completion menu.                             |
-| `]g` `[g`         | Previous/next for diagnostic message. See all with             |
-| `:CocDiagnostics` |
-| `gd`              | Jump to definition                                             |
-| `gy`              | Open type definition file (or jump to it if its in the current |
-| file?)            |
-| `gi`              | Jump to implementations                                        |
-| `gr`              | Show references                                                |
-| `K`               | Show documentation                                             |
-| `<leader>rn`      | Open rename dialog                                             |
-| `<leader>f`       | Format selected code                                           |
-| `<leader>a`       | Apply code actions (aka recommended fixes) to selected code    |
-| `<leader>ac`      | Apply code actions at cursor                                   |
-| `<leader>as`      | Apply code actions to entire buffer                            |
-| `<leader>qf`      | Apply preferred quickfix action to fix diagnostic on the       |
-| current line      |
-| `<leader>f`       | Format selected code                                           |
-| `<leader>re`      | Refactor code actions menu                                     |
-| `<leader>r`       | Refactor code actions menu for selection                       |
-| `<leader>cl`      | Run the Code Lens action on the current line                   |
-| `<leader>f`       | Format selected code                                           |
-| `<leader>f`       | Format selected code                                           |
-| `C-s`             | Selection ranges (needs serer support)                         |
-| `:Format`         | Format current buffer                                          |
-| `:Fold`           | Fold current buffer (folding also works on classes/function)   |
-| `:OR`             | Organize imports                                               |
-| `<space>a`        | Show diagnostics                                               |
-| `<space>e`        | Manage extensions                                              |
-| `<space>c`        | Show commands                                                  |
-| `<space>o`        | Show symbols (seems to let you jump between sections)          |
-| `<space>s`        | Show workspace symbols (not 100% what workspace symbols are)   |
-| `<space>j`        | Do default action for the next item                            |
-| `<space>k`        | Do default action for the previous item                        |
-| `<space>p`        | Resume latest coc list                                         |
-
-<!--}}}-->
-
-## coc-snippets <!--{{{-->
-
-| Keystroke | Description                                                |
-| --------- | ---------------------------------------------------------- |
-| `C-l`     | Trigger snippet expand                                     |
-| `C-j/k`   | Jump to next/previous placeholder                          |
-| `<tab>`   | Trigger snippet. Does this conflict with the autocomplete? |
-
-<!--}}}-->
-
-## FIXME <!--{{{-->
-
-1. :CocDiagnostics seems to not work or only partially work.
-
-2. coc-codelens-action doesn't work (at least in JS) <!--}}}-->
-
-## nvim-telescope <!--{{{-->
+## nvim-telescop
 
 There are more Keybindings and pickers to be set up:
 <https://github.com/nvim-telescope/telescope.nvim/wiki/Showcase>
 
-| Keystroke    | Description      |
-| ------------ | ---------------- |
-| `<leader>ff` | Find files       |
-| `<leader>fg` | Live grep        |
-| `<leader>fb` | Search buffers   |
-| `<leader>fh` | Search help      |
-| `<leader>fr` | Search git files |
+| Keystroke    | Description            |
+| ------------ | ---------------------- |
+| `<leader>ff` | Find files             |
+| `<leader>fg` | Live grep              |
+| `<leader>fb` | Search buffers         |
+| `<leader>fh` | Search help            |
+| `<leader>fr` | Search git files       |
+| `<leader>fo` | Find last viewed files |
 
-<!--}}}-->
+## Folding
+
+| Keystroke    | Description                        |
+| ------------ | ---------------------------------- |
+| `za`         | Toggle fold                        |
+| `zd`         | Delete fold marker on current line |
+| `zf{motion}` | Create fold from current line      |
+| `zR`         | Open all folds                     |
+| `zM`         | Close all folds                    |

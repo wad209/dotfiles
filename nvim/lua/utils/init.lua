@@ -20,7 +20,7 @@ M.linters = {
   "stylua",
   "black",
   "isort",
-  "codespell",
+  -- "codespell",
   -- "vale",
 }
 
