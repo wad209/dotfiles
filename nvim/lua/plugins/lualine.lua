@@ -4,83 +4,69 @@ local M = {
 }
 
 function M.config()
-  local lualine = require("lualine")
+  local clients_lsp = function()
+    local bufnr = vim.api.nvim_get_current_buf()
 
-  -- local hide_in_width = function()
-  --   return vim.fn.winwidth(0) > 80
-  -- end
-  --
-  -- local diagnostics = {
-  --   "diagnostics",
-  --   sources = { "nvim_diagnostic" },
-  --   sections = { "error", "warn" },
-  --   symbols = { error = " ", warn = " " },
-  --   colored = false,
-  --   always_visible = true,
-  -- }
-  --
-  -- local diff = {
-  --   "diff",
-  --   colored = false,
-  --   symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
-  --   cond = hide_in_width,
-  -- }
-  --
-  -- local filetype = {
-  --   "filetype",
-  --   icons_enabled = false,
-  -- }
-  --
-  -- local location = {
-  --   "location",
-  --   padding = 0,
-  -- }
-  --
-  -- local spaces = function()
-  --   return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
-  -- end
-  lualine.setup({
+    local clients = vim.lsp.buf_get_clients(bufnr)
+    if next(clients) == nil then
+      return ""
+    end
+
+    local c = {}
+    for _, client in pairs(clients) do
+      table.insert(c, client.name)
+    end
+    return "  " .. table.concat(c, " | ")
+  end
+
+  require("lualine").setup({
     options = {
       theme = "onedark",
-      globalstatus = true,
-      icons_enabled = true,
       component_separators = "|",
       section_separators = { left = "", right = "" },
-      -- component_separators = { left = "", right = "" },
-      -- section_separators = { left = "", right = "" },
-      -- disabled_filetypes = { "alpha", "dashboard" },
-      -- always_divide_middle = true,
     },
     sections = {
       lualine_a = {
-        { "mode" },
+        { "mode", separator = { left = "█", right = "" } },
       },
-      lualine_b = { "filename", "branch" },
-      lualine_c = { "fileformat" },
-      lualine_x = {},
-      lualine_y = { "filetype", "progress" },
+      lualine_b = {
+        "filetype",
+        "filename",
+        {
+          "branch",
+          icon = "",
+        },
+      },
+      lualine_c = {
+        {
+          "diff",
+          symbols = { added = " ", modified = " ", removed = " " },
+          --symbols = { added = " ", modified = " ", removed = " " },
+          colored = false,
+        },
+      },
+      lualine_x = {
+        {
+          "diagnostics",
+          symbols = { error = " ", warn = " ", info = " ", hint = "" },
+          update_in_insert = true,
+        },
+      },
+      lualine_y = { clients_lsp },
       lualine_z = {
-        { "location" },
+        { "location", separator = { left = "", right = "█" }, icon = "" },
+        { "progress", separator = { right = "█" } },
       },
     },
     inactive_sections = {
-      lualine_a = { "filename" },
+      lualine_a = {},
       lualine_b = {},
       lualine_c = {},
       lualine_x = {},
       lualine_y = {},
-      lualine_z = { "location" },
+      lualine_z = {},
     },
-    tabline = {},
-    extensions = {},
-    -- sections = {
-    --   lualine_a = { "mode" },
-    --   lualine_b = { "branch" },
-    --   lualine_c = { diagnostics },
-    --   lualine_x = { diff, spaces, "encoding", filetype },
-    --   lualine_y = { location },
-    --   lualine_z = { "progress" },
-    -- },
+    extensions = { "toggleterm", "trouble" },
   })
 end
 
