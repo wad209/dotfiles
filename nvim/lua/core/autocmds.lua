@@ -116,3 +116,9 @@ vim.api.nvim_create_autocmd("InsertCharPre", {
     vim.api.nvim_input("<Esc>m'" .. row + 1 .. "gg" .. col + 1 .. "|if<Esc>`'la")
   end,
 })
+
+-- Fix neorg concealer
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+  pattern = { "*.norg" },
+  command = "set conceallevel=3",
+})

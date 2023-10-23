@@ -41,7 +41,7 @@ function M.config()
         {
           "diff",
           symbols = { added = " ", modified = " ", removed = " " },
-          --symbols = { added = " ", modified = " ", removed = " " },
+          -- symbols = { added = " ", modified = " ", removed = " " },
           colored = false,
         },
       },
