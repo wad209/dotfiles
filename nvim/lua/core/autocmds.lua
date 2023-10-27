@@ -48,7 +48,19 @@ autocmd("Filetype", {
 })
 -- Set indentation to 2 spaces
 autocmd("Filetype", {
-  pattern = { "xml", "html", "xhtml", "css", "scss", "javascript", "typescript", "yaml", "lua", "json" },
+  pattern = {
+    "xml",
+    "html",
+    "xhtml",
+    "css",
+    "scss",
+    "javascript",
+    "typescript",
+    "yaml",
+    "lua",
+    "json",
+    "javascriptreact",
+  },
   command = "setlocal shiftwidth=2 tabstop=2",
 })
 
