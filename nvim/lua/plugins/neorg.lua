@@ -1,7 +1,7 @@
 local M = {
   "nvim-neorg/neorg",
   build = ":Neorg sync-parsers",
-  event = "VimEnter",
+  event = "VeryLazy",
   dependencies = { "nvim-lua/plenary.nvim" },
 }
 
