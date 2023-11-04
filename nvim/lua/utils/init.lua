@@ -10,6 +10,8 @@ M.servers = {
   "jsonls",
   "yamlls",
   "clangd",
+  "taplo",
+  -- "ruff_lsp",
   -- "ltex",
 }
 
@@ -20,6 +22,7 @@ M.linters = {
   "stylua",
   "black",
   "isort",
+  "shfmt",
   -- "codespell",
   -- "vale",
 }

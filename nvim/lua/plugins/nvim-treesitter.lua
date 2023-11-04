@@ -1,7 +1,7 @@
 local M = {
   "nvim-treesitter/nvim-treesitter",
   event = "BufReadPost",
-  run = ':TSUpdate',
+  run = ":TSUpdate",
   dependencies = {
     {
       "JoosepAlviste/nvim-ts-context-commentstring",
@@ -11,8 +11,8 @@ local M = {
       "nvim-tree/nvim-web-devicons",
     },
     {
-      'nvim-treesitter/nvim-treesitter-textobjects'
-    }
+      "nvim-treesitter/nvim-treesitter-textobjects",
+    },
   },
 }
 
@@ -36,7 +36,14 @@ function M.config()
       "rust",
       "typescript",
       "vim",
+      "python",
+      "toml",
+      "rst",
+      "ninja",
+      "markdown",
+      "markdown_inline",
       "yaml",
+      "regex",
     },
     -- Install parsers synchronously (only applied to `ensure_installed`)
     sync_install = false,

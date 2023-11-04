@@ -1,11 +1,14 @@
 local M = {
   "neovim/nvim-lspconfig",
   lazy = false,
-  event = { "BufReadPre" },
   dependencies = {
     {
       "hrsh7th/cmp-nvim-lsp",
     },
+    -- {
+    --   "jubnzv/virtual-types.nvim",
+    --   main = "virtualtypes",
+    -- },
   },
 }
 
@@ -40,6 +43,7 @@ function M.config()
   local on_attach = function(client, bufnr)
     lsp_keymaps(bufnr)
     require("illuminate").on_attach(client)
+    -- require("virtualtypes").on_attach(client)
   end
 
   for _, server in pairs(require("utils").servers) do
