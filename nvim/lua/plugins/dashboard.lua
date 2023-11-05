@@ -31,14 +31,14 @@ return {
         -- stylua: ignore
         center = {
           { action = "Telescope find_files",                                     desc = " Find file",       icon = " ", key = "f" },
-          { action = "ene | startinsert",                                        desc = " New file",        icon = " ", key = "n" },
+          { action = "ene | startinsert",                                        desc = " New file",        icon = " ", key = "e" },
           { action = "Telescope oldfiles",                                       desc = " Recent files",    icon = " ", key = "r" },
           { action = "Telescope live_grep",                                      desc = " Find text",       icon = " ", key = "g" },
           { action = "e $MYVIMRC",                                               desc = " Settings",        icon = " ", key = "s" },
           { action = 'lua require("persistence").load()',                        desc = " Restore Session", icon = " ", key = "r" },
           { action = "Lazy",                                                     desc = " Lazy",            icon = "󰒲 ", key = "l" },
           { action = "Mason",                                                    desc = " Mason",           icon = "󰟾 ", key = "x" },
-          { action = "Neorg workspace notes",                                    desc = " Notes",           icon = "󰠮 ", key = "q" },
+          { action = "Neorg workspace notes",                                    desc = " Notes",           icon = "󰠮 ", key = "n" },
           { action = "qa",                                                       desc = " Quit",            icon = " ", key = "q" },
         },
         footer = function()
