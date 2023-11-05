@@ -1,10 +1,8 @@
-local M = {
+return {
   "folke/which-key.nvim",
   event = "VeryLazy",
+  keys = {
+    { "<leader>wk", "<cmd>WhichKey<CR>", desc = "Show keybindings" },
+  },
+  opts = {},
 }
-
-function M.config()
-  require("which-key").setup({})
-end
-
-return M

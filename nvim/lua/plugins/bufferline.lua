@@ -1,4 +1,4 @@
-local M = {
+return {
   "akinsho/bufferline.nvim",
   event = { "BufReadPre", "BufAdd", "BufNew", "BufReadPost" },
   dependencies = {
@@ -6,14 +6,31 @@ local M = {
       "famiu/bufdelete.nvim",
     },
   },
-}
-
-function M.config()
-  require("bufferline").setup({
+  keys = {
+    { "<S-l>", "<cmd>bnext<CR>", desc = "Move to buffer to the right" },
+    { "<S-h>", "<cmd>bprevious<CR>", desc = "Move to buffer to the left" },
+    { "<S-q>", "<cmd>Bdelete!<CR>", desc = "Close current buffer" },
+  },
+  opts = {
     options = {
+      diagnostics = "nvim_lsp",
       close_command = "Bdelete! %d", -- can be a string | function, see "Mouse actions"
       right_mouse_command = "Bdelete! %d", -- can be a string | function, see "Mouse actions"
-      offsets = { { filetype = "NvimTree", text = "", padding = 1 } },
+      filetype_exclude = { "dashboard" },
+      diagnostics_indicator = function(_, _, diag)
+        local icons = {
+          Error = " ",
+          Warn = " ",
+          Hint = " ",
+          Info = " ",
+        }
+        local ret = (diag.error and icons.Error .. diag.error .. " " or "")
+          .. (diag.warning and icons.Warn .. diag.warning or "")
+        return vim.trim(ret)
+      end,
+      offsets = {
+        { filetype = "NvimTree", text = "", padding = 1 },
+      },
       separator_style = "thin", -- | "thick" | "thin" | { 'any', 'any' },
     },
     highlights = {
@@ -90,7 +107,17 @@ function M.config()
         bg = { attribute = "bg", highlight = "Normal" },
       },
     },
-  })
-end
-
-return M
+  },
+  config = function(_, opts)
+    require("bufferline").setup(opts)
+    -- Fix bufferline when restoring a session
+    vim.api.nvim_create_autocmd("BufAdd", {
+      callback = function()
+        vim.schedule(function()
+          -- This might or might not be a problem, for now I've added ad a defined global
+          pcall(nvim_bufferline)
+        end)
+      end,
+    })
+  end,
+}

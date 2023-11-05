@@ -1,12 +1,7 @@
-local M = {
+return {
   "lukas-reineke/indent-blankline.nvim",
-  event = "BufReadPre",
-  main = "ibl",
-  opts = {},
-}
-
-function M.config()
-  require("ibl").setup({
+  event = { "BufReadPost", "BufNewFile", "BufWritePre" },
+  opts = {
     exclude = {
       filetypes = {
         "lspinfo",
@@ -22,11 +17,7 @@ function M.config()
         "NvimTree",
       },
     },
-    scope = {
-      show_start = false,
-      show_end = false,
-    },
-  })
-end
-
-return M
+    scope = { enabled = false },
+  },
+  main = "ibl",
+}

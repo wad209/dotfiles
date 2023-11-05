@@ -93,7 +93,7 @@ but here are some of the most useful:
 | `gcO`     | Insert comment to the previous line and enters INSERT mode       |
 | `gcA`     | Insert comment to end of the current line and enters INSERT mode |
 
-## nvim-telescop
+## nvim-telescope
 
 There are more Keybindings and pickers to be set up:
 <https://github.com/nvim-telescope/telescope.nvim/wiki/Showcase>
@@ -106,6 +106,23 @@ There are more Keybindings and pickers to be set up:
 | `<leader>fh` | Search help            |
 | `<leader>fr` | Search git files       |
 | `<leader>fo` | Find last viewed files |
+| `<leader>fk` | Find keymaps           |
+
+## persistence.nvim
+
+Session manager.
+
+| Keystroke  | Description                |
+| ---------- | -------------------------- |
+| <leader>qs | Restore session            |
+| <leader>ql | Restore last session       |
+| <leader>qd | Don't save current session |
+
+## Notifications
+
+| Keystroke    | Description           |
+| ------------ | --------------------- |
+| `<leader>un` | Dismiss notifications |
 
 ## Folding
 
