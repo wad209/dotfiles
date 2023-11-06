@@ -11,6 +11,8 @@ M.servers = {
   "yamlls",
   "clangd",
   "taplo",
+  "marksman",
+  "cmake",
   -- "ruff_lsp",
   -- "ltex",
 }
