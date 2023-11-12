@@ -1,45 +1,38 @@
 local M = {
   "hrsh7th/nvim-cmp",
+  event = "InsertEnter",
+  version = false, -- last release is way too old
   dependencies = {
-    {
-      "hrsh7th/cmp-nvim-lsp",
-    },
-    {
-      "hrsh7th/cmp-buffer",
-    },
-    {
-      "hrsh7th/cmp-cmdline",
-    },
-    {
-      "hrsh7th/cmp-path",
-    },
-    {
-      "saadparwaiz1/cmp_luasnip",
-    },
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-cmdline",
+    "hrsh7th/cmp-path",
+    "saadparwaiz1/cmp_luasnip",
     {
       "L3MON4D3/LuaSnip",
-      event = "InsertEnter",
+      ---@diagnostic disable-next-line: undefined-global
+      build = (not jit.os:find("Windows"))
+          and "echo 'NOTE: jsregexp is optional, so not a big deal if it fails to build'; make install_jsregexp"
+        or nil,
       dependencies = {
         "rafamadriz/friendly-snippets",
+        config = function()
+          require("luasnip.loaders.from_vscode").lazy_load()
+        end,
+      },
+      opts = {
+        history = true,
+        delete_check_events = "TextChanged",
       },
     },
-    {
-      "hrsh7th/cmp-nvim-lua",
-    },
-    {
-      "hrsh7th/cmp-nvim-lsp-signature-help",
-    },
-  },
-  event = {
-    "InsertEnter",
-    "CmdlineEnter",
+    "hrsh7th/cmp-nvim-lua",
+    "hrsh7th/cmp-nvim-lsp-signature-help",
   },
 }
 
 function M.config()
   local cmp = require("cmp")
   local luasnip = require("luasnip")
-  require("luasnip/loaders/from_vscode").lazy_load()
 
   local check_backspace = function()
     local col = vim.fn.col(".") - 1
@@ -139,27 +132,30 @@ function M.config()
         return vim_item
       end,
     },
-    sources = {
+    sources = cmp.config.sources({
       { name = "nvim_lsp" },
       { name = "nvim_lua" },
       { name = "nvim_lsp_signature_help" },
       {
         name = "luasnip",
-        -- Don't show snippets inside of strings
         entry_filter = function()
           local context = require("cmp.config.context")
           return not context.in_treesitter_capture("string") and not context.in_syntax_group("String")
         end,
       },
-      { name = "buffer" },
       { name = "path" },
-    },
+      { name = "buffer" },
+    }),
     confirm_opts = {
       behavior = cmp.ConfirmBehavior.Replace,
       select = false,
     },
     window = {
-      completion = cmp.config.window.bordered({ border = "single" }),
+      completion = cmp.config.window.bordered({
+        border = "single",
+        -- Match with noice popup window style
+        winhighlight = "Normal:Normal,FloatBorder:DiagnosticInfo",
+      }),
       documentation = cmp.config.window.bordered({ border = "single" }),
     },
     experimental = {

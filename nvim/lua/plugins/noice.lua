@@ -13,6 +13,8 @@ return {
         ["vim.lsp.util.stylize_markdown"] = true,
         ["cmp.entry.get_documentation"] = true,
       },
+      hover = { enabled = true },
+      signature = { enabled = false },
     },
     routes = {
       {
@@ -72,6 +74,11 @@ return {
       hover = {
         border = {
           style = "single",
+        },
+        position = { row = 2, col = 0 },
+        win_options = {
+          -- Match with nvim-cmp popup window style
+          winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
         },
       },
       confirm = {
