@@ -5,6 +5,10 @@ return {
   opts = {
     -- delay = 100,
     delay = 200,
+    providers = {
+      "lsp",
+      "treesitter",
+    },
     large_file_cutoff = 2000,
     large_file_overrides = {
       providers = { "lsp" },
