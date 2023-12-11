@@ -114,7 +114,7 @@ export PROMPT2="$MAIN_COLOR... $RESET_COLOR"
 # }}}
 
 # Variables {{{
-export BROWSER=google-chrome-stable
+export BROWSER=firefox
 export EDITOR=nvim
 export PAGER=less
 # export MANPAGER="sh -c 'col -bx | bat -l man -p'"
