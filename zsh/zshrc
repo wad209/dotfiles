@@ -1,0 +1,95 @@
+# Original Author:       mutantmonkey (https://github.com/mutantmonkey)
+# Modified by:           Wad
+# Last change:           2015 March 21
+# I blatetly stole this, need do to some work on this
+
+# History {{{
+#
+# Download zimfw plugin manager if missing.
+export ZIM_HOME=~/.local/zim
+if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
+  curl -fsSL --create-dirs -o ${ZIM_HOME}/zimfw.zsh \
+      https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+fi
+
+# Install missing modules, and update ${ZIM_HOME}/init.zsh if missing or outdated.
+if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
+  source ${ZIM_HOME}/zimfw.zsh init -q
+fi
+
+HISTFILE=~/.zsh_history
+HISTSIZE=9223372036854775807
+SAVEHIST=9223372036854775807
+setopt appendhistory
+setopt share_history
+
+bindkey -v
+
+bindkey '^[[A'  vi-up-line-or-history
+bindkey '^[[B'  vi-down-line-or-history
+
+# directory colors
+if [ "$TERM" != "dumb" ]; then
+    # grep color
+    export GREP_COLORS="mt=1;33"
+    alias grep='grep --color=auto'
+fi
+
+# Variables {{{
+export EZA_COLORS="di=38;5;33"
+export BROWSER=firefox
+export EDITOR=nvim
+export PAGER=less
+# export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export LESS="-R -iMx4"
+export LEDGER_FILE=~/.hledger/hledger.journal
+
+# Java settings
+export _JAVA_AWT_WM_NONREPARENTING=1
+export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=lcd_vrgb -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel"
+
+alias net_connected='sudo lsof -i -n | grep -v LISTEN'
+alias net_listening='sudo lsof -i -n | grep LISTEN'
+alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+alias gits="git status -sb"
+alias vim='nvim'
+# if [[ `uname` == "Darwin" ]]; then
+#     alias ssh='ssh -I /opt/homebrew/lib/libykcs11.dylib'
+# fi
+alias ls='eza --icons --group-directories-first -F'
+alias tree='eza --tree'
+alias cat='bat --theme="zenburn"'
+alias du='dua'
+alias find='fd'
+alias cp='xcp'
+alias grep='ripgrep'
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+
+PATH=/usr/local/texlive/2014/bin/x86_64-linux:$HOME/.local/bin:$PATH
+
+eval "$(starship init zsh)"
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+
+# M-cc to bring up fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export GDK_BACKEND=wayland
+export SDL_VIDEODRIVER=wayland
+
+# Initialize modules.
+source ${ZIM_HOME}/init.zsh
+
+# Space key to accept autosuggestion
+bindkey '^ ' autosuggest-accept
+
+# Disable underline for zsh-
+(( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_STYLES[path]=none
+ZSH_HIGHLIGHT_STYLES[path_prefix]=none
