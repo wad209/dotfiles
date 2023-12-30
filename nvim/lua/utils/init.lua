@@ -13,6 +13,7 @@ M.servers = {
   "taplo",
   "marksman",
   "cmake",
+  "rust_analyzer",
   -- "ruff_lsp",
   -- "ltex",
 }

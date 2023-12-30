@@ -28,6 +28,7 @@ function M.config()
       formatting.stylua,
       formatting.google_java_format,
       diagnostics.flake8,
+      formatting.rustfmt,
     },
     on_attach = function(client, bufnr)
       if client.supports_method("textDocument/formatting") then

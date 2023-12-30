@@ -22,15 +22,16 @@ return {
         theme = "onedark",
         component_separators = "|",
         -- section_separators = { left = "", right = "" },
+        section_separators = { left = "", right = "" },
         -- component_separators = { left = "", right = "" },
-        section_separators = { left = "", right = "" },
+        -- section_separators = { left = "", right = "" },
       },
       sections = {
         lualine_a = {
-          { "mode", separator = { left = "█", right = "" } },
+          { "mode", separator = { left = "█", right = "" } },
         },
         lualine_b = {
-          "filetype",
+          { "filetype", separator = { left = "" } },
           "filename",
           {
             "branch",
@@ -48,7 +49,7 @@ return {
         lualine_x = {},
         lualine_y = { clients_lsp },
         lualine_z = {
-          { "location", separator = { left = "", right = "█" }, icon = "" },
+          { "location", separator = { left = "", right = "█" }, icon = "" },
           { "progress", separator = { right = "█" } },
         },
       },
