@@ -10,6 +10,9 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 output DP-3 scale 1.5
+
+output eDP-1 scale 1.5
+
 # output DP-3 {
 #     mode 2048x1080@23.997Hz
 # }
@@ -47,9 +50,11 @@ font pango:JetBrainsMono Nerd Font 8
 #exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 exec swayidle -w \
-	timeout 300 'swaylock -fSle --effect-blur 5x5 --grace 3' \
-	timeout 330 'swaymsg "output * power off"' \
-	resume 'swaymsg "output * power on"'
+    timeout 297 'swaylock -fSle --effect-blur 5x5 --grace 3' \
+    timeout 330 'swaymsg "output * power off"' \
+    resume 'swaymsg "output * power on"' \
+    before-sleep 'playerctl pause' \
+    before-sleep 'swaylock -fSle --effect-blur 5x5 --grace 3'
 exec gammastep -l 38.873333:-76.996944 -b 0.8:0.5
 exec xdg-settings set default-web-browser firefox.desktop
 exec wl-paste --watch cliphist store
@@ -76,13 +81,14 @@ bindsym XF86AudioPrev exec playerctl previousindsym
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec wezterm
+bindsym $mod+x exec makoctl dismiss -a
 
 # kill focused window
 bindsym $mod+Shift+c kill
 
 # start dmenu (a program launcher)
-bindsym $mod+p exec wofi --show=drun
+bindsym $mod+p exec fuzzel
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -168,7 +174,7 @@ bindsym $mod+q reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your X session.' -B 'Yes, exit sway' 'swaymsg exit'
 
 # disable window bars and boarders
 for_window [class=".*"] border pixel 0
