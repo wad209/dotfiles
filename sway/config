@@ -71,6 +71,8 @@ exec mako
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
+bindsym Print exec grimshot --notify copy area
+bindsym Shift+Print exec grimshot --notify save area
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
@@ -79,7 +81,12 @@ bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previousindsym 
+bindsym XF86AudioPrev exec playerctl previousi
+bindsym XF86PowerOff exec swaynag \
+            -t warning \
+            -m 'What do you want to do?' \
+            -b 'Poweroff' 'systemctl poweroff' \
+            -b 'Reboot' 'systemctl reboot'
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
