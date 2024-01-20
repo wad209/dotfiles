@@ -22,7 +22,10 @@ input * {
 }
 
 input type:touchpad {
-    tap enabled
+    tap disabled
+    # tap_button_map lrm
+    dwt enabled
+    click_method clickfinger
     natural_scroll enabled
 }
 
