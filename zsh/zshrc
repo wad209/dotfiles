@@ -62,7 +62,7 @@ alias cat='bat --theme="zenburn"'
 alias du='dua'
 alias find='fd'
 alias cp='xcp'
-alias grep='ripgrep'
+alias grep='rg'
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
