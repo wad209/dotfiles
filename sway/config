@@ -61,7 +61,7 @@ exec swayidle -w \
 exec gammastep -l 38.873333:-76.996944 -b 0.8:0.5
 exec xdg-settings set default-web-browser firefox.desktop
 exec wl-paste --watch cliphist store
-exec wl-paste -pw wl-copy
+# exec wl-paste -pw wl-copy
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
