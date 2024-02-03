@@ -52,6 +52,8 @@ alias net_connected='sudo lsof -i -n | grep -v LISTEN'
 alias net_listening='sudo lsof -i -n | grep LISTEN'
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 alias gits="git status -sb"
+alias oath='ykman oath accounts code'
+
 alias vim='nvim'
 # if [[ `uname` == "Darwin" ]]; then
 #     alias ssh='ssh -I /opt/homebrew/lib/libykcs11.dylib'
