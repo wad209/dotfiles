@@ -52,12 +52,46 @@ font pango:JetBrainsMono Nerd Font 8
 # screen before suspend. Use loginctl lock-session to lock your screen.
 #exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
+# swaylock-effects-improved command for reuse.
+set $lock swaylock \
+        -fSle \
+        --indicator \
+        --indicator-radius 100 \
+        --indicator-thickness 7\
+        --indicator-idle-visible \
+        --clock \
+        --effect-blur 7x5
+
+# waylogout command for reuse.
+set $power waylogout \
+      --hide-cancel \
+      --screenshots \
+      --effect-blur=7x5 \
+      --indicator-radius 100 \
+      --indicator-thickness 7 \
+      --lock-command="swaylock \
+        -fSle \
+        --indicator \
+        --indicator-radius 100 \
+        --indicator-thickness 7\
+        --indicator-idle-visible \
+        --clock \
+        --effect-blur 7x5 \
+        --grace 3" \
+      --logout-command="swaymsg exit" \
+      --suspend-command="systemctl suspend-then-hibernate" \
+      --hibernate-command="systemctl hibernate" \
+      --poweroff-command="systemctl shutdown" \
+      --reboot-command="systemctl reboot" \
+      --selection-label
+
 exec swayidle -w \
-    timeout 297 'swaylock -fSle --effect-blur 5x5 --grace 3' \
+    timeout 300 "$lock --grace 3" \
     timeout 330 'swaymsg "output * power off"' \
+    timeout 600 'systemctl suspend-then-hibernate' \
     resume 'swaymsg "output * power on"' \
     before-sleep 'playerctl pause' \
-    before-sleep 'swaylock -fSle --effect-blur 5x5'
+    before-sleep "$lock"
 exec gammastep -l 38.873333:-76.996944 -b 0.8:0.5
 exec xdg-settings set default-web-browser firefox.desktop
 exec wl-paste --type text --watch cliphist store
@@ -92,11 +126,7 @@ exec "avizo-service"
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previousi
-bindsym XF86PowerOff exec swaynag \
-            -t warning \
-            -m 'What do you want to do?' \
-            -b 'Poweroff' 'systemctl poweroff' \
-            -b 'Reboot' 'systemctl reboot'
+bindsym XF86PowerOff exec $power
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -196,7 +226,7 @@ bindsym $mod+q reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your X session.' -B 'Yes, exit sway' 'swaymsg exit'
+bindsym $mod+Shift+e exec $power
 
 # disable window bars and boarders
 for_window [class=".*"] border pixel 0
