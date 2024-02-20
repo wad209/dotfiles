@@ -69,15 +69,7 @@ set $power waylogout \
       --effect-blur=7x5 \
       --indicator-radius 100 \
       --indicator-thickness 7 \
-      --lock-command="swaylock \
-        -fSle \
-        --indicator \
-        --indicator-radius 100 \
-        --indicator-thickness 7\
-        --indicator-idle-visible \
-        --clock \
-        --effect-blur 7x5 \
-        --grace 3" \
+      --lock-command="$lock" \
       --logout-command="swaymsg exit" \
       --suspend-command="systemctl suspend-then-hibernate" \
       --hibernate-command="systemctl hibernate" \
