@@ -1,29 +1,36 @@
-local M = {
-  "nvim-neorg/neorg",
-  build = ":Neorg sync-parsers",
-  event = "VeryLazy",
-  dependencies = { "nvim-lua/plenary.nvim" },
-}
-
-function M.config()
-  require("neorg").setup({
-    load = {
-      ["core.defaults"] = {}, -- Loads default behaviour
-      ["core.concealer"] = {
-        config = {
-          icon_preset = "diamond",
-        },
-      }, -- Adds pretty icons to your documents
-      ["core.dirman"] = { -- Manages Neorg workspaces
-        config = {
-          workspaces = {
-            notes = "~/notes",
+return {
+  {
+    "vhyrro/luarocks.nvim",
+    event = "VeryLazy",
+    branch = "more-fixes",
+    config = function()
+      require("luarocks").setup({})
+    end,
+  },
+  {
+    "nvim-neorg/neorg",
+    event = "VeryLazy",
+    branch = "luarocks",
+    dependencies = { "luarocks.nvim" },
+    config = function()
+      require("neorg").setup({
+        load = {
+          ["core.defaults"] = {},
+          ["core.concealer"] = {
+            config = {
+              icon_preset = "diamond",
+            },
+          }, -- Adds pretty icons to your documents
+          ["core.dirman"] = {
+            config = {
+              workspaces = {
+                notes = "~/notes",
+              },
+              default_workspace = "notes",
+            },
           },
-          default_workspace = "notes",
         },
-      },
-    },
-  })
-end
-
-return M
+      })
+    end,
+  },
+}

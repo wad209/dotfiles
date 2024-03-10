@@ -20,7 +20,7 @@ keymap("", "<right>", "<nop>")
 
 -- Toggle auto-indenting for code paste
 keymap("n", "<F2>", "<cmd>set invpaste paste?<CR>")
-vim.opt.pastetoggle = "<F2>"
+-- vim.opt.pastetoggle = "<F2>"
 
 -- Move around splits using Ctrl + {h,j,k,l}
 keymap("n", "<C-h>", "<cmd>TmuxNavigateLeft<CR>")

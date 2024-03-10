@@ -75,6 +75,9 @@ function M.config()
   local config = {
     -- try enabling virtual text
     virtual_text = true,
+    inlay_hints = {
+      enabled = true,
+    },
     -- show signs
     signs = {
       active = signs,
