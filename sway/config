@@ -78,12 +78,11 @@ set $power waylogout \
       --selection-label
 
 exec swayidle -w \
-    timeout 300 "$lock --grace 3" \
+    timeout 300 '$lock --grace 3' \
     timeout 330 'swaymsg "output * power off"' \
-    timeout 600 'systemctl suspend-then-hibernate' \
     resume 'swaymsg "output * power on"' \
     before-sleep 'playerctl pause' \
-    before-sleep "$lock"
+    before-sleep '$lock'
 exec gammastep -l 38.873333:-76.996944 -b 0.8:0.5
 exec xdg-settings set default-web-browser firefox.desktop
 exec wl-paste --type text --watch cliphist store
