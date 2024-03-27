@@ -1,36 +1,32 @@
 return {
-  {
-    "vhyrro/luarocks.nvim",
-    event = "VeryLazy",
-    branch = "more-fixes",
-    config = function()
-      require("luarocks").setup({})
-    end,
+  "nvim-neorg/neorg",
+  event = "VeryLazy",
+  version = "*",
+  dependencies = {
+    {
+      "vhyrro/luarocks.nvim",
+      priority = 1000,
+      config = true,
+    },
   },
-  {
-    "nvim-neorg/neorg",
-    event = "VeryLazy",
-    branch = "luarocks",
-    dependencies = { "luarocks.nvim" },
-    config = function()
-      require("neorg").setup({
-        load = {
-          ["core.defaults"] = {},
-          ["core.concealer"] = {
-            config = {
-              icon_preset = "diamond",
+  config = function()
+    require("neorg").setup({
+      load = {
+        ["core.defaults"] = {},
+        ["core.concealer"] = {
+          config = {
+            icon_preset = "diamond",
+          },
+        }, -- Adds pretty icons to your documents
+        ["core.dirman"] = {
+          config = {
+            workspaces = {
+              notes = "~/notes",
             },
-          }, -- Adds pretty icons to your documents
-          ["core.dirman"] = {
-            config = {
-              workspaces = {
-                notes = "~/notes",
-              },
-              default_workspace = "notes",
-            },
+            default_workspace = "notes",
           },
         },
-      })
-    end,
-  },
+      },
+    })
+  end,
 }
