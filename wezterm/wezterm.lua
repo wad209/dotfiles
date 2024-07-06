@@ -1,5 +1,7 @@
 local wezterm = require("wezterm")
 local config = {
+  -- Use the defaults as a base
+  hyperlink_rules = wezterm.default_hyperlink_rules(),
   font = wezterm.font("JetBrains Mono"),
   audible_bell = "Disabled",
   -- color_scheme = "One Dark (Gogh)",
